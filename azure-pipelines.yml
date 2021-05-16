@@ -4,13 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- '*'
+  - '*'
+stages:
 
-pool:
-  vmImage: 'ubuntu-18.04'
-  demands:
-    - npm
+- stage: 'Prepare'
+  displayName: 'Prepare'
+  jobs:
+    - job: 'Setup'
+      pool:
+        vmImage: 'ubuntu-18.04'
+        demands:
+          - npm
 
+
+      
 variables: 
   buildConfiguration: 'Release'
 
